@@ -1,4 +1,5 @@
-import useMenu from "../../assets/shop/useMenu";
+
+import useMenu from "../../hooks/useMenu";
 import MenuItem from "../shared/MenuItem";
 
 const Menu = () => {
