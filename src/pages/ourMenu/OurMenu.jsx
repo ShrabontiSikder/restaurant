@@ -37,12 +37,12 @@ const OurMenu = () => {
       item={pizza}>
       </MenuCategory>
       <MenuCategory
-      title="Salad"
+      title="Salads"
       bannerImg={bannerImg}
       item={salad}>
       </MenuCategory>
       <MenuCategory
-      title="Soup"
+      title="Soups"
       bannerImg={bannerImg}
       item={soup}>
       </MenuCategory>
