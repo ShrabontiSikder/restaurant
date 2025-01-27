@@ -6,7 +6,11 @@ import { FaGoogle } from "react-icons/fa";
 import { VscGithub } from "react-icons/vsc";
 import logo from "../../assets/logo.png";
 import "./Login.css"
+import { useEffect, useState } from "react";
+import { LoadCanvasTemplate, loadCaptchaEnginge, } from "react-simple-captcha";
 const Login = () => {
+  
+  const [value, setValue] = useState("");
   const {
     register,
     handleSubmit,
@@ -14,7 +18,16 @@ const Login = () => {
     formState: { errors },
   } = useForm()
 
+  useEffect(()=>{
+    loadCaptchaEnginge(6);
+  },[])
+
   const onSubmit = (data) => console.log(data)
+  const handleCaptcha = (event) =>{
+    const value = event.target.value;
+    console.log(value)
+    setValue(value)
+  }
   return (
   <div className="bg-img">
     <Link to="/">
@@ -38,8 +51,14 @@ const Login = () => {
         <br />
         <input className="focus:outline-none px-2 py-2 w-96" placeholder="password" {...register("pasword")} />
       </div>
+      <div className="mt-5">
+        <label htmlFor="" className="text-xl"><LoadCanvasTemplate /></label>
+        <br />
+        <input type="text" onChange={handleCaptcha} className="focus:outline-none px-2 py-2 w-96" placeholder="Type here" {...register("pasword")} />
+      </div>
+      
 
-      <input className="btn mt-5 bg-orange-400 hover:bg-orange-400 text-white w-96" type="submit" value="SignIn" />
+      <input disabled={true} className="btn mt-5 bg-orange-400 hover:bg-orange-400 text-white w-96" type="submit" value="SignIn" />
     </form>
     <p className="mt-5">New Here? <Link className="text-orange-400" to="/signup">Create a New Account</Link></p>
     <p className="text-center mt-5 text-xl">or signin with</p>
